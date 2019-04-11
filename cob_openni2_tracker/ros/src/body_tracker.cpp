@@ -259,7 +259,8 @@ void BodyTracker::imageCallback(const sensor_msgs::ImageConstPtr& color_image_ms
 			}
 		}
 	}
-	cv::waitKey(10);
+	// waitKey is not defined??
+	// cv::waitKey(10);
 	// Output modified video stream
 	image_pub_.publish(cv_ptr->toImageMsg());
 }
