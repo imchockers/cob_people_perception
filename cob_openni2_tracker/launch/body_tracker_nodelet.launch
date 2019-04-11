@@ -20,16 +20,16 @@
 	</group>
 
 
-	<node pkg="nodelet" type="nodelet" name="body_tracker" args="load cob_openni2_tracker/body_tracker_nodelet /$(arg camera_name)/$(arg camera_name)_nodelet_manager" output="screen" cwd="ROS_HOME">
+	<node pkg="nodelet" type="nodelet" name="body_tracker" args="load cob_openni2_tracker/body_tracker_nodelet kinect2" output="screen" cwd="ROS_HOME">
 		<param name="depth_optical_frame_id" type="str" value="$(arg camera_name)_depth_optical_frame" />
 		<param name="tf_prefix" value="$(arg tracker_name)" />
 		<!--param name="relative_frame" value="$(arg camera_name)_depth_optical_frame" /-->
 		<param name="standalone_without_camera_driver" value="$(arg standalone_without_camera_driver)" />
 		
-		<param name="nodelet_manager" value="/$(arg camera_name)/$(arg camera_name)_nodelet_manager" />
+		<param name="nodelet_manager" value="kinect2" />
 		
-		<remap from="~color_image_topic" to="$(arg camera_name)/$(arg color_image_name)" />
-		<remap from="~point_cloud_topic" to="$(arg camera_name)/$(arg point_cloud_name)" />
+		<remap from="~color_image_topic" to="kinect2/sd/image_color_rect" />
+		<remap from="~point_cloud_topic" to="kinect2/sd/points" />
 	
 		<rosparam file="$(find cob_openni2_tracker)/launch/body_tracker_params.yaml"/>
 	
